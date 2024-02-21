@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import styles from './City.module.css';
 import { useEffect, useState } from 'react';
 
@@ -16,6 +16,10 @@ function City() {
   const [cities, setCities] = useState([]);
   const { id } = useParams(); // { id: 342904 };
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const lat = searchParams.get('lat');
+  const lng = searchParams.get('lng');
+
   useEffect(() => {
     const fetchCities = async () => {
       const res = await fetch(`${BASE_URL}/cities`);
@@ -25,8 +29,6 @@ function City() {
 
     fetchCities();
   }, []);
-
-  console.log(cities);
 
   // TEMP DATA
   // const currentCity = {
@@ -38,7 +40,14 @@ function City() {
 
   // const { cityName, emoji, date, notes } = currentCity;
 
-  return <h1>City {id}</h1>;
+  return (
+    <>
+      <h1>City {id}</h1>
+      <h2>
+        lat: {lat}, lng: {lng}
+      </h2>
+    </>
+  );
   // return (
   //   <div className={styles.city}>
   //     <div className={styles.row}>
