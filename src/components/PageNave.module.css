@@ -1,0 +1,16 @@
+.nav {
+  background-color: blueviolet;
+}
+
+.nav ul {
+  display: flex;
+  justify-content: space-between;
+  font-size: 2rem;
+  list-style: none;
+}
+
+:global(.active) {
+  text-decoration: none;
+  color: wheat;
+  border-bottom: 2px solid wheat;
+}
