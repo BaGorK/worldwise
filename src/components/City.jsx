@@ -18,6 +18,7 @@ function City() {
   const { currentCity, getCity, isLoading } = useCities();
 
   useEffect(() => {
+    console.log(id);
     getCity(id);
   }, [id]);
 
