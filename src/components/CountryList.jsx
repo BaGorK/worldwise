@@ -4,8 +4,10 @@ import Message from './Message';
 
 import styles from './CountryList.module.css';
 import CountryItem from './CountryItem';
+import { useCities } from '../contexts/CitiesContext';
 
-function CountryList({ cities, isLoading }) {
+function CountryList() {
+  const { cities, isLoading } = useCities();
   //   const countries = [...new Set(cities.map((city) => city.country))]; // list of country
   const countries = cities.reduce((acc, city) => {
     if (acc.find((ctry) => ctry.country === city.country)) return acc;
